@@ -2,13 +2,9 @@
 """ A script to test pycodestyle"""
 
 
-def test():
-    print("It works !!")
+class Check:
+    def check(name, key="works"):
+        print(f"its {name} and it {key}")
 
 
-def main():
-    test()
-
-
-if __name__ == "__main__":
-    main()
+Check.check('elvis')
