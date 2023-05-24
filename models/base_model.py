@@ -6,12 +6,15 @@ from datetime import datetime
 import uuid
 
 
+timeformat = "%Y-%m-%dT%H:%M:%S.%f"
+
+
 class BaseModel:
     def __init__(self, *args, **kwargs):
         """initializes the base model"""
         self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        self.created_at = datetime.now().strftime(timeformat)
+        self.updated_at = datetime.now().strftime(timeformat)
 
     def __str__(self):
         """Returns a string representation of instance"""
@@ -20,7 +23,7 @@ class BaseModel:
 
     def save(self):
         """updates the puplic instance updated_at to current date"""
-        pass
+        self.updated_at = datetime.now().strftime(timeformat)
 
     def to_dict(self):
-        pass
+        return self.__dict__
